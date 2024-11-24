@@ -2,8 +2,6 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import { IndexRoute } from './routers/index.route';
-import { TelegramBotService } from './service/TelegramBot.service';
 
 dotenv.config();
 
@@ -27,10 +25,6 @@ async function main() {
 
 	app.use(express.json());
 
-	// run telegram bot
-	new TelegramBotService()
-
-	app.use('/api', IndexRoute);
 
 	app.get('/', (req: Request, res: Response) => {
 		res.send('Express + TypeScript Server');
